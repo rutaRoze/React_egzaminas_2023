@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import DonorsRegistration from './DonarsRegistration';
 
 function DonarsList() {
   const [donorsList, setDonorsList] = useState();
@@ -20,9 +21,23 @@ function DonarsList() {
     return <div>Data is loading...</div>;
   }
 
+  const addDonor = (firstName, lastName, age, gender, bloodGroup, img) => {
+    const donorAddedToList = donorsList.concat({
+      firstName: firstName,
+      lastName: lastName,
+      age: age,
+      gender: gender,
+      bloodGroup: bloodGroup,
+      image: img
+    });
+    setDonorsList(donorAddedToList);
+  };
+
   return (
     <>
-      <h3>New Donar Registration Form</h3>
+      <h3 className="mt-5">Donars List and Registration</h3>
+
+      <DonorsRegistration addDonor={addDonor} />
 
       <table className="table table-striped mt-5 ">
         <thead>

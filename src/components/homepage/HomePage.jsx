@@ -1,21 +1,30 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
-function HomePage () {
-    const navigate = useNavigate();
+function HomePage() {
+  const navigate = useNavigate();
 
-    return (
-      <>
-        <p>SIGNUP FORMS</p>
-        <h1>Grow your audience with free forms</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dolor quo earum quia,
-          consequuntur veniam explicabo dolorem voluptates iste. Perspiciatis non deleniti nihil
-          temporibus aut cupiditate voluptatem corrupti, voluptatum fuga!
-        </p>
-        <button onClick={() => navigate(`/form`)}>Sign Up</button>
-        <img src="http://imf.lt/assets/img/photos/donoro_kortele_new.png" alt="donor card example" />
-      </>
-    );
+  return (
+    <>
+      <div className="container-fluid text-center mt-5">
+        <div className="row justify-content-center row-cols-1 row-cols-md-3 row-cols-lg-4">
+          <div className="col align-self-center  mb-5">
+            <img
+              src="http://imf.lt/assets/img/photos/donoro_kortele_new.png"
+              alt="donor card example"
+            />
+          </div>
+          <div className="col text-start m-5">
+            <h1>Give Something that means something</h1>
+            <p>
+              Give blood and give the gift of life. Come to give blood Dec. 1-17 and get warm thank
+              you.
+            </p>
+            <button type="button" className="btn btn-warning" onClick={() => navigate(`/form`)}>Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default HomePage;

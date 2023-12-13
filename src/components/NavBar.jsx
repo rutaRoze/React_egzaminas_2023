@@ -9,12 +9,12 @@ function NavBar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ padding: '0' }}>
-        <div className="container-fluid " style={{ backgroundColor: '#3b5a5a', padding: '10px' }}>
-          <a className="navbar-brand text-light" href="/">
-            Organ Donation
+        <div className="container-fluid " style={{ backgroundColor: '#ffc400', padding: '10px' }}>
+          <a className="navbar-brand text-dark" href="/">
+            Blood Donation
           </a>
           <button
-            className="navbar-toggler text-light"
+            className="navbar-toggler text-dark"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarTogglerDemo02"
@@ -31,17 +31,17 @@ function NavBar() {
           >
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link text-light" aria-current="page" href="/">
+                <a className="nav-link text-dark" aria-current="page" href="/">
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-light" aria-disabled="true" href="/form">
+                <a className="nav-link text-dark" aria-disabled="true" href="/form">
                   New Donar Registration
                 </a>
               </li>
               <li className="nav-item ">
-                <a className="nav-link text-light" aria-disabled="true" href="/details">
+                <a className="nav-link text-dark" aria-disabled="true" href="/details">
                   Donar Details
                 </a>
               </li>
@@ -53,7 +53,7 @@ function NavBar() {
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button className="btn btn-outline-light" type="submit">
+              <button className="btn btn-outline-dark" type="submit">
                 Search
               </button>
             </form>
