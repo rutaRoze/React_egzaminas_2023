@@ -40,11 +40,11 @@ function NavBar() {
                   New Donor Registration
                 </a>
               </li>
-              <li className="nav-item ">
+              {/* <li className="nav-item ">
                 <a className="nav-link text-dark" aria-disabled="true" href="/details">
                   Donor Details
                 </a>
-              </li>
+              </li> */}
             </ul>
             <form className="d-flex" role="search">
               <input

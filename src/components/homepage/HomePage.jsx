@@ -7,8 +7,8 @@ function HomePage() {
   return (
     <>
       <div className="container-fluid text-center mt-5 home-page-style">
-        <div className="row justify-content-center row-cols-1 row-cols-md-3 row-cols-lg-4">
-          <div className="col align-self-center  mb-5">
+        <div className="row justify-content-center row-cols-1 row-cols-lg-4">
+          <div className="col mb-5">
             <img
               src="http://imf.lt/assets/img/photos/donoro_kortele_new.png"
               alt="donor card example"

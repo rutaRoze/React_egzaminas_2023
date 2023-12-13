@@ -62,7 +62,7 @@ function DonorsRegistration({ addDonor }) {
             className=" col-8 col-sm-8 col-md-6 col-xl-4 mt-3"
           >
             <fieldset>
-              <legend data-testid="form-title" style={{ color: 'black', fontWeight: '500' }}>
+              <legend data-testid="form-title" style={{ color: 'grey', fontWeight: '500' }}>
                 New Donor Registration Form
               </legend>
               <div className="mb-3">

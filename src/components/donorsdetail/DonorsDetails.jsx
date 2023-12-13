@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import "./DonorsDetails.css"
 
 function DonorsDetails() {
   const [donor, setDonor] = useState();
@@ -38,7 +39,7 @@ function DonorsDetails() {
 
   return (
     <>
-      <div className="container m-5 ">
+      <div className="container-fluid m-5 donors-details-page-style">
         <div className="row">
           <div className="card mb-3" style={{ maxWidth: '540px' }}>
             <div className="row g-0">
