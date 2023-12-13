@@ -15,8 +15,8 @@ function HomePage() {
             />
           </div>
           <div className="col text-start m-5">
-            <h1>Give Something that means something</h1>
-            <p>
+            <h1 data-testid="component-title">Give Something that means something</h1>
+            <p data-testid="component-paragrath">
               Give blood and give the gift of life. Come to give blood Dec. 1-17 and get warm thank
               you.
             </p>

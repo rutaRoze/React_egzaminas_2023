@@ -38,29 +38,20 @@ function DonorsDetails() {
 
   return (
     <>
-      <div className="container p-5 ">
-        <div className="row row-cols-sm-1 row-cols-lg-2 ">
-          <div className="col p-4">
-            <div className="col py-5 px-5">
-              <h4></h4>
-              <div className="card mb-3" style="max-width: 540px;">
-                <div className="row g-0">
-                  <div className="col-md-4">
-                    <img src={image} className="img-fluid rounded-start" alt="Donor picture" />
-                  </div>
-                  <div className="col-md-8">
-                    <div className="card-body">
-                      <h5 className="card-title">Personal information</h5>
-                      <p className="card-text">Name: {firstName}</p>
-                      <p className="card-text">Surname: {lastName}</p>
-                      <p className="card-text">Age: {age}</p>
-                      <p className="card-text">Birth Date: {birthDate}</p>
-                      <p className="card-text">Gender: {gender}</p>
-                      <p className="card-text">Blood Type: {bloodGroup}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className="card mb-3" style="max-width: 540px;">
+        <div className="row g-0">
+          <div className="col-md-4">
+            <img src={image} className="img-fluid rounded-start" alt="pic" />
+          </div>
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">Personal information</h5>
+              <p className="card-text">Name: {firstName}</p>
+              <p className="card-text">Surname: {lastName}</p>
+              <p className="card-text">Age: {age}</p>
+              <p className="card-text">Birth Date: {birthDate}</p>
+              <p className="card-text">Gender: {gender}</p>
+              <p className="card-text">Blood Type: {bloodGroup}</p>
             </div>
           </div>
         </div>

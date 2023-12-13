@@ -22,7 +22,7 @@ function DonorsList() {
   }, []);
 
   if (isLoading) {
-    return <div>Data is loading...</div>;
+    return <div data-testid="post-loading">Data is loading...</div>;
   }
 
   const addDonor = (firstName, lastName, age, gender, bloodGroup) => {
@@ -77,7 +77,7 @@ function DonorsList() {
           {donorsList.map((donor) => (
             <tr key={donor.id}>
               <th scope="row">{donor.id}</th>
-              <td>{donor.firstName}</td>
+              <td data-testid="first-name">{donor.firstName}</td>
               <td>{donor.lastName}</td>
               <td>{donor.age}</td>
               <td>{donor.gender}</td>
