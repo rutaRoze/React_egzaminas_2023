@@ -7,7 +7,7 @@ function DonarsList() {
 
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/docs/users')
+      .get('https://dummyjson.com/users')
       .then((response) => {
         setDonorsList(response.data.users);
         console.log({ donorsList });
