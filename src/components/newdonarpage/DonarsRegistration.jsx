@@ -4,7 +4,6 @@ import { useState } from 'react';
 function DonorsRegistration({ addDonor }) {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
-    // id: '',
     firstName: '',
     lastName: '',
     age: '',
@@ -25,13 +24,6 @@ function DonorsRegistration({ addDonor }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addDonor(
-      formData.firstName,
-      formData.lastName,
-      formData.age,
-      formData.gender,
-      formData.bloodGroup
-    );
     sendDataToBackend();
     setIsLoading(true);
   };
@@ -46,8 +38,9 @@ function DonorsRegistration({ addDonor }) {
         bloodGroup: formData.bloodGroup
       })
       .then((response) => {
-        console.log(response.data);
+        addDonor(response.data);
         setIsLoading(false);
+        
       })
       .catch((error) => console.log(error));
   };

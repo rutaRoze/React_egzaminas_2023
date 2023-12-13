@@ -7,7 +7,6 @@ function DonorsList() {
   const [donorsList, setDonorsList] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log({ donorsList });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,34 +24,32 @@ function DonorsList() {
     return <div data-testid="post-loading">Data is loading...</div>;
   }
 
-  const addDonor = (firstName, lastName, age, gender, bloodGroup) => {
-    const donorAddedToList = donorsList.concat({
-      id: '',
-      firstName: firstName,
-      lastName: lastName,
-      age: age,
-      gender: gender,
-      bloodGroup: bloodGroup
-
-      //   id: '',
-      //   firstName: firstName,
-      //   lastName: lastName,
-      //   maidenName: '',
-      //   age: age,
-      //   gender: gender,
-      //   email: '',
-      //   phone: '',
-      //   username: '',
-      //   password: '',
-      //   birthDate: '',
-      //   image: '',
-      //   bloodGroup: bloodGroup,
-      //   height: '',
-      //   weight: '',
-      //   eyeColor: '',
-      //   hair: ''
-    });
+  const addDonor = (donor) => {
+    const donorAddedToList = donorsList.concat(donor);
     setDonorsList(donorAddedToList);
+  };
+
+  const deleteDonor = (id) => {
+    const deletingDonorList = donorsList.map((donor) => {
+      if (donor.id === id) {
+        const updateDonor = {
+          ...donor,
+          isDeleting: true
+        };
+        return updateDonor;
+      }
+      return donor;
+    });
+
+    setDonorsList(deletingDonorList);
+
+    axios
+      .delete(`https://dummyjson.com/users/${id}`)
+      .then(() => {
+        const updatedDonorList = donorsList.filter((donor) => donor.id !== id);
+        setDonorsList(updatedDonorList);
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -90,7 +87,12 @@ function DonorsList() {
                 >
                   See Data
                 </button>
-                <button type="button" className="btn btn-danger">
+                <button
+                  type="button"
+                  disabled={donor.isDeleting}
+                  onClick={() => deleteDonor(donor.id)}
+                  className="btn btn-danger"
+                >
                   Delete Data
                 </button>
               </td>
