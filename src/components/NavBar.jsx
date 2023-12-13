@@ -37,12 +37,12 @@ function NavBar() {
               </li>
               <li className="nav-item">
                 <a className="nav-link text-dark" aria-disabled="true" href="/form">
-                  New Donar Registration
+                  New Donor Registration
                 </a>
               </li>
               <li className="nav-item ">
                 <a className="nav-link text-dark" aria-disabled="true" href="/details">
-                  Donar Details
+                  Donor Details
                 </a>
               </li>
             </ul>

@@ -1,10 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import DonorsRegistration from './DonarsRegistration';
+import { useNavigate } from 'react-router-dom';
 
-function DonarsList() {
+function DonorsList() {
   const [donorsList, setDonorsList] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log({ donorsList });
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -21,21 +25,39 @@ function DonarsList() {
     return <div>Data is loading...</div>;
   }
 
-  const addDonor = (firstName, lastName, age, gender, bloodGroup, img) => {
+  const addDonor = (firstName, lastName, age, gender, bloodGroup) => {
     const donorAddedToList = donorsList.concat({
+      id: '',
       firstName: firstName,
       lastName: lastName,
       age: age,
       gender: gender,
-      bloodGroup: bloodGroup,
-      image: img
+      bloodGroup: bloodGroup
+
+      //   id: '',
+      //   firstName: firstName,
+      //   lastName: lastName,
+      //   maidenName: '',
+      //   age: age,
+      //   gender: gender,
+      //   email: '',
+      //   phone: '',
+      //   username: '',
+      //   password: '',
+      //   birthDate: '',
+      //   image: '',
+      //   bloodGroup: bloodGroup,
+      //   height: '',
+      //   weight: '',
+      //   eyeColor: '',
+      //   hair: ''
     });
     setDonorsList(donorAddedToList);
   };
 
   return (
     <>
-      <h3 className="mt-5">Donars List and Registration</h3>
+      <h3 className="mt-5">Donors List and Registration</h3>
 
       <DonorsRegistration addDonor={addDonor} />
 
@@ -48,6 +70,7 @@ function DonarsList() {
             <th scope="col">Age</th>
             <th scope="col">Gender</th>
             <th scope="col">Blood Group</th>
+            <th scope="col">See Data</th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +82,18 @@ function DonarsList() {
               <td>{donor.age}</td>
               <td>{donor.gender}</td>
               <td>{donor.bloodGroup}</td>
+              <td>
+                <button
+                  type="button"
+                  onClick={() => navigate(`/details/${donor.id}`)}
+                  className="btn btn-success me-2"
+                >
+                  See Data
+                </button>
+                <button type="button" className="btn btn-danger">
+                  Delete Data
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -67,4 +102,4 @@ function DonarsList() {
   );
 }
 
-export default DonarsList;
+export default DonorsList;

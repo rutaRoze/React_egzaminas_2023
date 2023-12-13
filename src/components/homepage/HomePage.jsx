@@ -1,11 +1,12 @@
 import { useNavigate } from 'react-router-dom';
+import "./HomePage.css"
 
 function HomePage() {
   const navigate = useNavigate();
 
   return (
     <>
-      <div className="container-fluid text-center mt-5">
+      <div className="container-fluid text-center mt-5 home-page-style">
         <div className="row justify-content-center row-cols-1 row-cols-md-3 row-cols-lg-4">
           <div className="col align-self-center  mb-5">
             <img

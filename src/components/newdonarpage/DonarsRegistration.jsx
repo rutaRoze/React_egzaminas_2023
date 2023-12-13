@@ -1,7 +1,8 @@
+import axios from 'axios';
 import { useState } from 'react';
 
 function DonorsRegistration({ addDonor }) {
-
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     // id: '',
     firstName: '',
@@ -10,6 +11,10 @@ function DonorsRegistration({ addDonor }) {
     gender: '',
     bloodGroup: ''
   });
+
+  if (isLoading) {
+    return <div data-testid="loading-data">Data is loading...</div>;
+  }
 
   const handleForm = (event) => {
     setFormData((previousFormData) => ({
@@ -20,7 +25,57 @@ function DonorsRegistration({ addDonor }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    addDonor(formData.firstName, formData.lastName, formData.age, formData.gender, formData.bloodGroup);
+    // addDonor(
+    //   formData.firstName,
+    //   formData.lastName,
+    //   formData.age,
+    //   formData.gender,
+    //   formData.bloodGroup
+    // );
+    sendDataToBackend();
+    setIsLoading(true);
+  };
+
+  //   const json = JSON.stringify({
+  // firstName: formData.firstName,
+  // lastName: formData.lastName,
+  // age: formData.age,
+  // gender: formData.gender,
+  // bloodGroup: formData.bloodGroup
+  // id: '',
+  // firstName: formData.firstName,
+  // lastName: formData.lastName,
+  // maidenName: '',
+  // age: formData.age,
+  // gender: formData.gender,
+  // email: '',
+  // phone: '',
+  // username: '',
+  // password: '',
+  // birthDate: '',
+  // image: '',
+  // bloodGroup: formData.bloodGroup,
+  // height: '',
+  // weight: '',
+  // eyeColor: '',
+  // hair: ''
+  //   });
+
+  const sendDataToBackend = () => {
+    axios
+      .post('https://dummyjson.com/users/add', {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        age: formData.age,
+        gender: formData.gender,
+        bloodGroup: formData.bloodGroup
+      })
+      .then((response) => {
+        console.log(response.data);
+        addDonor(response.data);
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -36,17 +91,6 @@ function DonorsRegistration({ addDonor }) {
               <legend data-testid="form-title" style={{ color: 'black', fontWeight: '500' }}>
                 New Donor Registration Form
               </legend>
-              {/* <div className="mb-3">
-                <label className="form-label form-fields-title">Donor ID</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="id"
-                  name="id"
-                  value={formData.id}
-                  onChange={handleForm}
-                />
-              </div> */}
               <div className="mb-3">
                 <label className="form-label form-fields-title">Donor first name</label>
                 <input

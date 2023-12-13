@@ -1,0 +1,8 @@
+.home-page-style {
+  height: 100vh;
+  background-image: url('https://media.istockphoto.com/id/1224791306/vector/gold-stars-random-luxury-sparkling-confetti-scatt.jpg?s=612x612&w=0&k=20&c=YxRQlhwznaS-XjI9d3QVgoVZZY4rf4ZgoyIgN6mkbz0=');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: black;
+}
