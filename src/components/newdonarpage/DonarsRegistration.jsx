@@ -25,41 +25,16 @@ function DonorsRegistration({ addDonor }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // addDonor(
-    //   formData.firstName,
-    //   formData.lastName,
-    //   formData.age,
-    //   formData.gender,
-    //   formData.bloodGroup
-    // );
+    addDonor(
+      formData.firstName,
+      formData.lastName,
+      formData.age,
+      formData.gender,
+      formData.bloodGroup
+    );
     sendDataToBackend();
     setIsLoading(true);
   };
-
-  //   const json = JSON.stringify({
-  // firstName: formData.firstName,
-  // lastName: formData.lastName,
-  // age: formData.age,
-  // gender: formData.gender,
-  // bloodGroup: formData.bloodGroup
-  // id: '',
-  // firstName: formData.firstName,
-  // lastName: formData.lastName,
-  // maidenName: '',
-  // age: formData.age,
-  // gender: formData.gender,
-  // email: '',
-  // phone: '',
-  // username: '',
-  // password: '',
-  // birthDate: '',
-  // image: '',
-  // bloodGroup: formData.bloodGroup,
-  // height: '',
-  // weight: '',
-  // eyeColor: '',
-  // hair: ''
-  //   });
 
   const sendDataToBackend = () => {
     axios
@@ -72,7 +47,6 @@ function DonorsRegistration({ addDonor }) {
       })
       .then((response) => {
         console.log(response.data);
-        addDonor(response.data);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
