@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 function DonorsList() {
   const [donorsList, setDonorsList] = useState();
   const [isLoading, setIsLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
 
@@ -54,52 +55,71 @@ function DonorsList() {
 
   return (
     <>
-      <h3 className="mt-5">Donors List and Registration</h3>
-
       <DonorsRegistration addDonor={addDonor} />
 
-      <table className="table table-striped mt-5 ">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Age</th>
-            <th scope="col">Gender</th>
-            <th scope="col">Blood Group</th>
-            <th scope="col">See Data</th>
-          </tr>
-        </thead>
-        <tbody>
-          {donorsList.map((donor) => (
-            <tr key={donor.id}>
-              <th scope="row">{donor.id}</th>
-              <td data-testid="first-name">{donor.firstName}</td>
-              <td>{donor.lastName}</td>
-              <td>{donor.age}</td>
-              <td>{donor.gender}</td>
-              <td>{donor.bloodGroup}</td>
-              <td>
-                <button
-                  type="button"
-                  onClick={() => navigate(`/details/${donor.id}`)}
-                  className="btn btn-success me-2"
-                >
-                  See Data
-                </button>
-                <button
-                  type="button"
-                  disabled={donor.isDeleting}
-                  onClick={() => deleteDonor(donor.id)}
-                  className="btn btn-danger"
-                >
-                  Delete Data
-                </button>
-              </td>
+      <h3 className="mt-5">Donors List</h3>
+
+      <div className="container ">
+        <form>
+          <div class="my-5">
+            <input
+              type="text"
+              onChange={(event) => setSearch(event.target.value)}
+              className="form-control"
+              placeholder="Search for blood group"
+            />
+          </div>
+        </form>
+
+        <table className="table table-striped table-hover mt-5 ">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Age</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Blood Group</th>
+              <th scope="col">See Data</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {donorsList
+              .filter((donor) => {
+                return search.toLowerCase() === ''
+                  ? donor
+                  : donor.bloodGroup.toLowerCase().includes(search);
+              })
+              .map((donor) => (
+                <tr key={donor.id}>
+                  <th scope="row">{donor.id}</th>
+                  <td data-testid="first-name">{donor.firstName}</td>
+                  <td>{donor.lastName}</td>
+                  <td>{donor.age}</td>
+                  <td>{donor.gender}</td>
+                  <td>{donor.bloodGroup}</td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => navigate(`/details/${donor.id}`)}
+                      className="btn btn-success me-2"
+                    >
+                      See Data
+                    </button>
+                    <button
+                      type="button"
+                      disabled={donor.isDeleting}
+                      onClick={() => deleteDonor(donor.id)}
+                      className="btn btn-danger"
+                    >
+                      Delete Data
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }
