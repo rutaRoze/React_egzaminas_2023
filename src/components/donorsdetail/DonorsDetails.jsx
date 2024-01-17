@@ -12,7 +12,7 @@ function DonorsDetails() {
 
   useEffect(() => {
     axios
-      .get(`https://dummyjson.com/users/${id}`)
+      .get(`http://localhost:8080/donors?donorId=${id}`)
       .then((response) => {
         setDonor(response.data);
         setIsLoading(false);

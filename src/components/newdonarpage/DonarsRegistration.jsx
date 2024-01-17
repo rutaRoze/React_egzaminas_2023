@@ -30,7 +30,7 @@ function DonorsRegistration({ addDonor }) {
 
   const sendDataToBackend = () => {
     axios
-      .post('https://dummyjson.com/users/add', {
+      .post('http://localhost:8080/donors', {
         firstName: formData.firstName,
         lastName: formData.lastName,
         age: formData.age,

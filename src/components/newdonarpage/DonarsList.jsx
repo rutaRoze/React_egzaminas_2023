@@ -12,9 +12,9 @@ function DonorsList() {
 
   useEffect(() => {
     axios
-      .get('https://dummyjson.com/users')
+      .get('http://localhost:8080/donors/list')
       .then((response) => {
-        setDonorsList(response.data.users);
+        setDonorsList(response.data);
         console.log({ donorsList });
         setIsLoading(false);
       })
@@ -45,7 +45,7 @@ function DonorsList() {
     setDonorsList(deletingDonorList);
 
     axios
-      .delete(`https://dummyjson.com/users/${id}`)
+      .delete(`http://localhost:8080/donors?donorId=${id}`)
       .then(() => {
         const updatedDonorList = donorsList.filter((donor) => donor.id !== id);
         setDonorsList(updatedDonorList);
@@ -61,7 +61,7 @@ function DonorsList() {
 
       <div className="container ">
         <form>
-          <div class="my-5">
+          <div className="my-5">
             <input
               type="text"
               onChange={(event) => setSearch(event.target.value)}
